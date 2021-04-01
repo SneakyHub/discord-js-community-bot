@@ -24,7 +24,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setAuthor(message.author.tag)
                 .setTitle("Command Help Menu")
-                .addField("Aliases", `${cmd.aliases || "None"}`)
+                .addField("Aliases", `${cmd.aliases.toString() || "None"}`)
 
             message.channel.send(embed);
         }
