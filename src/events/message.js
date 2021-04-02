@@ -4,7 +4,7 @@ const config = require("../../config");
 module.exports = {
     name: "message",
     run: async (client, message) => {
-        if (message.mentions.includes(client.user)) {
+        if (message.mentions.has(client.user)) {
             return message.channel.send("My prefix is: -");
         }
 
