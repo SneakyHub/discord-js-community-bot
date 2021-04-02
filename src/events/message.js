@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const config = require("../../config");
+const cooldowns = new Discord.Collection();
 
 module.exports = {
     name: "message",
@@ -15,7 +16,16 @@ module.exports = {
         const command = args.shift().toLowerCase();
 
         if (client.commands.has(command)) {
-            client.commands.get(command).run(client, message, args);
+            if (cooldowns.has(message.author.id)) {
+                return message.reply("please wait for the command cooldown to end before attempting to run a command.");
+            } else {
+                client.commands.get(command).run(client, message, args);
+
+                cooldowns.set(message.author.id);
+                setTimeout(() => {
+                    cooldowns.delete(message.author.id);
+                }, 5000);
+            }
         }
     }
 }
