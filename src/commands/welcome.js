@@ -6,7 +6,7 @@ module.exports = {
     name: "welcome",
     aliases: [],
     run: async (client, message, args) => {
-        if (!message.member.hasPermission("MANAGE_SERVER")) {
+        if (!message.member.hasPermission("MANAGE_GUILD")) {
             return message.reply("you do not have permissions to manage this server's settings.");
         }
 
@@ -27,12 +27,38 @@ module.exports = {
                     },
                     {
                         name: "Sub Commands",
-                        value: `\`set -c <#channel>\` - Sets the welcome channel.\n\`set -m <message>\` - Sets the welcome message.\n\`-enable\` - Enables the welcome module.\n\`delete -c \` - Deletes the welcome channel from the database.\n\`delete -m \` - Deletes the welcome message from the database.\n\`disable\` - Disables the welcome module.`
+                        value: `\`set -c <#channel>\` - Sets the welcome channel.\n\`set -m <message>\` - Sets the welcome message.\n\`-enable\` - Enables the welcome module.\n\`delete -c \` - Deletes the welcome channel from the database.\n\`delete -m \` - Deletes the welcome message from the database.\n\`-disable\` - Disables the welcome module.`
                     }
                 )
                 .setFooter("This module is currently in Beta, some features might not properly work.")
 
             message.channel.send(embed);
+        } else if (option == "-enable") {
+            guilds.set(`${message.guild.id}.welcome.enabled`, true);
+
+            message.channel.send("The welcome module has been enabled in this server.");
+        } else if (option == "-disable") {
+            guilds.set(`${message.guild.id}.welcome.enabled`, false);
+
+            message.channel.send("The welcome module has been disabled in this server.");
+        } else if (option == "set") {
+            let option2 = args[1];
+
+            if (option2 == "-c") {
+                let channel = message.mentions.channels.first();
+
+                guilds.set(`${message.guild.id}.welcome.channel_id`, channel.id);
+
+                message.channel.send(`The welcome channel has been set to ${channel}.`);
+            }
+        } else if (option == "delete") {
+            let option2 = args[1];
+
+            if (option2 == "-c") {
+                guilds.delete(`${message.guild.id}.welcome.channel_id`);
+
+                message.channel.send(`The welcome channel has been deleted.`);
+            }
         }
     }
 }
