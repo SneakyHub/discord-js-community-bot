@@ -5,8 +5,9 @@ const LoadCommands = require("./utils/LoadCommands");
 const LoadEvents = require("./utils/LoadEvents");
 
 client.commands = new Discord.Collection();
+client.snipes = new Map();
 
-LoadCommands(client, "../src/commands");
-LoadEvents(client, "../src/events");
+LoadCommands(client, "../commands");
+LoadEvents(client, "../events");
 
 client.login(config.token);
