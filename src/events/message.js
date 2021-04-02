@@ -5,7 +5,7 @@ module.exports = {
     name: "message",
     run: async (client, message) => {
         if (message.mentions.has(client.user)) {
-            return message.channel.send("My prefix is: -");
+            return message.channel.send(`My prefix is: ${config.prefix}`);
         }
 
         if (!message.content.startsWith(config.prefix)) return;
