@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.5.2",
-    "humanize-duration": "^3.25.1"
+    "humanize-duration": "^3.25.1",
+    "quick.db": "^7.1.3"
   }
 }
