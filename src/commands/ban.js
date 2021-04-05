@@ -9,16 +9,16 @@ module.exports = {
         }
 
         if (message.member.hasPermission("BAN_MEMBERS")) {
-            let user = message.mentions.users.first();
+            let member = message.mentions.members.first();
             let reason = args.slice(1).join(" ") || "Unspecified";
 
-            if (!user) {
+            if (!member) {
                 return message.reply("please provide a valid user to ban.");
             }
 
             try {
-                user.ban({ reason: reason + ` - Banned by: ${message.author.tag}` });
-                message.channel.send(`**${user.tag}** has been banned.\nReason: ${reason}`);
+                member.ban({ reason: reason + ` - Banned by: ${message.author.tag}` });
+                message.channel.send(`**${member.user.tag}** has been banned.\nReason: ${reason}`);
             } catch (error) {
                 console.error(error);
                 message.channel.send("I was unable to ban the user.");

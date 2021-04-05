@@ -9,16 +9,16 @@ module.exports = {
         }
 
         if (message.member.hasPermission("KICK_MEMBERS")) {
-            let user = message.mentions.users.first();
+            let member = message.mentions.members.first();
             let reason = args.slice(1).join(" ") || "Unspecified";
 
-            if (!user) {
+            if (!member) {
                 return message.reply("please provide a valid user to kick.");
             }
 
             try {
-                user.kick({ reason: reason + ` - Kicked by: ${message.author.tag}` });
-                message.channel.send(`**${user.tag}** has been kicked.\nReason: ${reason}`);
+                member.kick({ reason: reason + ` - Kicked by: ${message.author.tag}` });
+                message.channel.send(`**${member.user.tag}** has been kicked.\nReason: ${reason}`);
             } catch (error) {
                 console.error(error);
                 message.channel.send("I was unable to kick the user.");
