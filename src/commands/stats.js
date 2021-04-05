@@ -10,12 +10,12 @@ module.exports = {
             .setTitle("Bot Statistics")
             .addFields(
                 {
-                    name: "Servers",
-                    value: `${client.guilds.cache.size}`
+                    name: "Users",
+                    value: `${client.users.cache.filter(u => !u.bot).size}`
                 },
                 {
-                    name: "Users",
-                    value: `${client.users.cache.size}`
+                    name: "Bot Users",
+                    value: `${client.users.cache.filter(u => u.bot).size}`
                 },
                 {
                     name: "API Latency",

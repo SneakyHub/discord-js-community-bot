@@ -4,7 +4,7 @@ module.exports = {
     name: "kick",
     aliases: [],
     run: async (client, message, args) => {
-        if (!message.guild.me.hasPermission("BAN_MEMBERS")) {
+        if (!message.guild.me.hasPermission("KICK_MEMBERS")) {
             return message.reply("I do not have sufficient permissions to do this.");
         }
 

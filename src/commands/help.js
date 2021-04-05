@@ -9,7 +9,7 @@ module.exports = {
 
             client.commands.forEach(cmd => {
                 if (CommandsArray.includes(cmd.name)) return;
-                CommandsArray.push(cmd.name)
+                CommandsArray.push(cmd.name);
             });
 
             const embed = new Discord.MessageEmbed()
