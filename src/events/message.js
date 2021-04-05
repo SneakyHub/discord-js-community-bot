@@ -9,7 +9,7 @@ module.exports = {
             return message.channel.send(`My prefix is: ${config.prefix}`);
         }
 
-        if (!message.content.startsWith(config.prefix)) return;
+        if (!message.content.startsWith(config.prefix || `<@!${client.user.id}>`)) return;
         if (message.author.bot) return;
 
         const args = message.content.slice(config.prefix.length).trim().split(/ +/);
