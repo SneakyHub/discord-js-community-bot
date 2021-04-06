@@ -6,9 +6,9 @@ require("moment-duration-format");
 module.exports = {
   name: "bot-info",
   aliases: ["info"],
-  run: async (client, message, args) => {
+  run: async (client, msg, args) => {
     // code here
-    var message = await msg.channel.send("Getting Status...");
+    var msg = await message.channel.send("Getting Status...");
 
   var osType = await os.type();
 
