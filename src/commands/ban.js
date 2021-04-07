@@ -10,6 +10,8 @@ module.exports = {
 
         if (message.member.hasPermission("BAN_MEMBERS")) {
             let member = message.mentions.members.first();
+
+            if (member.id == message.author.id) return message.reply("you can't moderate yourself.");
             let reason = args.slice(1).join(" ") || "Unspecified";
 
             if (!member) {
