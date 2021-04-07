@@ -6,6 +6,7 @@ const owner_pings = new db.table("Anti_Owner_Pings");
 
 module.exports = {
     name: "message",
+    disabled: true,
     run: async (client, message) => {
         if (message.author.bot) return;
         if (message.author.id == "746113176885657701") return;
