@@ -32,7 +32,7 @@ function checkDays(date) {
 			"singapore": "Singapore :flag_sg:",
 			"sydney": "Sydney :flag_au:",
 			"southafrica": "South Africa :flag_za:",
-    "amsterdam": "Amsterdam :flag_nl:",
+                        "amsterdam": "Amsterdam :flag_nl:",
 				"europe": "Europa :flag_eu:"
 
 	}
