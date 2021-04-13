@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const hd = require("humanize-duration");
 
 module.exports = {
     name: "guildMemberAdd",
