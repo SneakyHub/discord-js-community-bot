@@ -21,6 +21,8 @@ module.exports = {
                 let channel = message.guild.channels.cache.get(logs);
                 let duration = args[1] || "5s";
 
+                if (!target) return message.channel.send("Correct usage: <@user> <duration; ex: 5s> <reason; if any>");
+
                 try {
                     target.roles.add(role);
                     message.channel.send(`${target.user.tag} has been muted for ${hd(ms(duration))}.\nReason: *${reason}*`);
@@ -50,7 +52,7 @@ module.exports = {
 
                     setTimeout(() => {
                         target.roles.remove(role);
-                    }, ms(duration));
+                    }, ms(`${duration}`));
                 } catch (error) {
                     message.channel.send("Correct usage: <@user> <duration; ex: 5s> <reason; if any>");
                     return console.error(error);

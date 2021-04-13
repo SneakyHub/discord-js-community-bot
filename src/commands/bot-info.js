@@ -5,72 +5,80 @@ require("moment-duration-format");
 
 module.exports = {
     name: "bot-info",
-    aliases: ["info"],
+    aliases: ["info", "botinfo"],
     run: async (client, message, args) => {
-        // code here
-        var msg = await message.channel.send("Getting Status...");
+        var msg = await message.channel.send("Getting information...");
 
         var osType = await os.type();
+        let space = 0;
 
         if (osType === "Darwin") osType = "macOS";
         else if (osType === "Windows") osType = "Windows";
         else osType = os.type();
 
-        var embed = {
+        require("../utils/StorageSpaceUsed").get(client, "../../src").then(response => {
+            space = response;
+        });
+
+        const embed = {
             color: 3447003,
-            description: "**Status**",
+            title: "Bot Information",
             fields: [
                 {
                     name: "❯ Bot Owner",
                     value: client.users.cache.get("716761186812821604"),
-                    inline: false
+                    inline: true
                 },
                 {
                     name: "❯ Uptime",
                     value: moment
                         .duration(client.uptime)
                         .format("D [Day], H [Hour], m [Minutes], s [Seconds]"),
-                    inline: false
+                    inline: true
                 },
                 {
                     name: "❯ Server OS",
                     value: `${osType}`,
-                    inline: false
+                    inline: true
                 },
                 {
                     name: "❯ Memory",
-                    value: `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`,
-                    inline: false
+                    value: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,
+                    inline: true
+                },
+                {
+                    name: "❯ Storage Used",
+                    value: `${space} KB`,
+                    inline: true
                 },
                 {
                     name: "❯ CPU Model",
                     value: `• ${os.cpus().map(i => `${i.model}`)[0]} `,
-                    inline: false
+                    inline: true
                 },
                 {
                     name: "❯ CPU Usage",
                     value: `• ${Math.round(require("os").loadavg()[0] * 100) / 100}%`,
-                    inline: false
+                    inline: true
                 },
                 {
-                    name: " ❯ General İnformations",
+                    name: " ❯ General Information",
                     value: `             
-• Server: ${client.guilds.cache.size}                   
-• Channel: ${client.channels.cache.size}                   
-• User: ${client.guilds.cache
+• Servers: ${client.guilds.cache.size}                   
+• Channels: ${client.channels.cache.size}                   
+• Users: ${client.guilds.cache
                             .reduce((a, b) => a + b.memberCount, 0)
                             .toLocaleString()}
                     `,
-                    inline: false
+                    inline: true
                 },
-
                 {
                     name: "❯ Versions",
                     value: `
-           • Discord.js: v${Discord.version}
-           • Node: ${process.version}
+           • Discord.JS: v${Discord.version}
+           • Node.JS: ${process.version}
                     `,
-                    inline: false
+                    inline: true
                 }
             ],
             thumbnail: { url: client.user.displayAvatarURL() }

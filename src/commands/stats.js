@@ -23,7 +23,7 @@ module.exports = {
                 },
                 {
                     name: "Memory Usage",
-                    value: `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)} MB`
+                    value: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`
                 },
                 {
                     name: "Uptime",

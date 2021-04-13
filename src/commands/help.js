@@ -15,6 +15,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setAuthor(message.author.tag)
                 .setTitle("Help Menu")
+                .addField("Prefix", `${require("../../config").prefix.toString()}`)
                 .addField("Command List", `${CommandsArray.toString()}`)
 
             message.channel.send(embed);
