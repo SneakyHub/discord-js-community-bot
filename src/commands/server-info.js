@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 
-module.exports = { name: "user-info", aliases: ["userinfo"], 
+module.exports = { 
+	name: "server-info", 
+	aliases: ["serverinfo"], 
 run: async (client, message, args) => {
 
 function checkDays(date) {
@@ -13,7 +15,7 @@ function checkDays(date) {
         let serverSize = message.guild.memberCount;
         let botCount = message.guild.members.cache.filter(m => m.user.bot).size;
         let humanCount = serverSize - botCount;
-        let verifLevels = ["Nothing", "Düşük hesapta e-posta doğrulanmış olmalıdır", "Orta - Discord'a 5 dakikadan daha uzun süre kayıtlı olmalıdır", "Yüksek - (╯ ° □ °） ╯︵ ┻━┻ - sunucunun üyesi 10 dakikadan uzun olmalıdır", "Çok Yüksek - ┻━┻ ミ ヽ (ಠ 益 ಠ) ﾉ 彡 ┻━┻ - doğrulanmış bir telefon numarasına sahip olmalıdır"];
+        let verifLevels = ["Nothing", "Low", "Middle", "High", "Very High"];
 	let region = {
 			"us-central": "US Central :flag_us:",
 			"us-east": "US East :flag_us:",
@@ -36,9 +38,9 @@ function checkDays(date) {
 	}
 
 	
-			const yukleniyor = await message.channel.send(`Getting Server Information`);
+			const editing = await message.channel.send(`Getting Server Information`);
 
-let sunucu = new Discord.MessageEmbed()
+let server = new Discord.MessageEmbed()
 .setAuthor('Server Informatipn', message.guild.iconURL())
 .setThumbnail(message.guild.iconURL())
 .addField('Server Informations', `Server Name: **${guild.name}** \nServer ID: **${message.guild.id}** \nServer Owner: **${guild.owner}** \nRegion: **${region[message.guild.region]}** \nCreation Date: **${checkDays(message.guild.createdAt)}** 
@@ -48,6 +50,8 @@ let sunucu = new Discord.MessageEmbed()
 .setTimestamp()
 .setColor('#D2EE07')
 .setFooter('Server Information', message.guild.iconURL())
-        return yukleniyor.edit('', sunucu);
-
-};
+        return editing.edit('', server);
+	
+} 
+   } 
+	
