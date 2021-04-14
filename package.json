@@ -1,14 +1,17 @@
 {
-  "name": "community-bot",
+  "name": "discord-js-community-bot",
   "version": "1.0.0",
-  "description": "a bot for communities",
+  "description": "",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js"
   },
-  "author": "SneakyHub Commmunity",
+  "author": "Microwave#6443",
   "license": "ISC",
+  "repository": {
+    "url": "https://github.com/SneakyHub/discord-js-community-bot.git"
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.6",
