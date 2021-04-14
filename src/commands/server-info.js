@@ -9,7 +9,7 @@ module.exports = {
             let now = new Date();
             let diff = now.getTime() - date.getTime();
             let days = Math.floor(diff / 86400000);
-            return days + (days == 1 ? " day" : " day") + " ago";
+            return days + (days == 1 ? " days" : " days") + " ago";
         }
 
         let serverSize = message.guild.memberCount;
@@ -40,9 +40,9 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
             .setAuthor(message.author.tag)
             .setThumbnail(message.guild.iconURL())
-            .addField("Server Information", `Server Name: **${message.guild.name}**\nServer ID: **${message.guild.id}**\nServer Owner: **${message.guild.owner}**\nRegion: **${region[message.guild.region]}**\nCreation Date: **${checkDays(message.guild.createdAt)}**`)
-            .addField("User Information", `All User: **${humanCount}** \nBot Users: **${botCount}** \nRole Count:**${message.guild.roles.cache.size}**`)
-            .addField("Channels", `Text: **${message.guild.channels.cache.filter(c => c.type === 'text').size}**\nVoice: **${message.guild.channels.cache.filter(c => c.type === 'voice').size}**\nCategory: **${message.guild.channels.cache.filter(c => c.type === 'category').size}**`)
+            .addField("Server Information", `Server Name: ${message.guild.name}\nServer ID: ${message.guild.id}\nServer Owner: ${message.guild.owner}\nRegion: ${region[message.guild.region]}\nCreation Date: ${checkDays(message.guild.createdAt)}`)
+            .addField("User Information", `All User: ${humanCount} \nBot Users: ${botCount} \nRole Count:${message.guild.roles.cache.size}`)
+            .addField("Channels", `Text: ${message.guild.channels.cache.filter(c => c.type === 'text').size}\nVoice: ${message.guild.channels.cache.filter(c => c.type === 'voice').size}\nCategory: ${message.guild.channels.cache.filter(c => c.type === 'category').size}`)
 
         return message.channel.send(embed);
     }
