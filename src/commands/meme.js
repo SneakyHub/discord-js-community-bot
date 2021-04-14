@@ -29,7 +29,7 @@ module.exports = {
                 .setAuthor(message.author.tag)
                 .setImage(parseData)
 
-            msg.edit("", embed);
+            return msg.edit("", embed);
         });
     }
 }
