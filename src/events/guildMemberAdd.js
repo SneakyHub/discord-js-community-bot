@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 const hd = require("humanize-duration");
+const db = require("quick.db");
+const saved_roles = new db.table("saved_roles");
 
 module.exports = {
     name: "guildMemberAdd",
@@ -8,6 +10,28 @@ module.exports = {
         let channel = member.guild.channels.cache.find(c => c.id == `${channel_id}`);
 
         channel.send(`${member} welcome to ${member.guild.name}, head over to <#825797019103789056> to get started with hosting! If you need help feel free to ask for it in <#828253375387795486>!`);
+
+        if (saved_roles.has(`${member.user.id}`)) {
+            try {
+                let array = [];
+                let user_roles = saved_roles.fetch(`${member.user.id}.roles`);
+
+                user_roles.forEach(role => {
+                    if (array.includes(`${role}`)) return;
+                    array.push(`${role}`);
+                });
+
+                array.forEach(d => {
+                    let role = member.guild.roles.cache.get(`${d}`);
+
+                    member.roles.add(role);
+                });
+
+                saved_roles.delete(`${member.user.id}`);
+            } catch (error) {
+
+            }
+        }
 
         if (Date.now() - member.user.createdAt < 259200000) {
             member.ban({ reason: "Account is less than 3 days old. - Banned by Auto-Ban" });
