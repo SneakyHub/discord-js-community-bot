@@ -2,6 +2,34 @@
 
 This discord bot is fully open source and we are proud to continue working on it and adding to this repo! If you would like to fork it please go ahead and use it for your own projects. We are looking for more people to help us contribute towards this repo if you are interested in helping us with this project please let us know ro just send us a pull request! Please only use this source if you agree to our license agreement. If you do not agree to it then please do not use this bot.
 
+# Bot Features
+
+Here is what we currently have within our discord bot!
+
+- AFK
+- Light moderation commands ( kick, ban & mute )
+- Cleanup ( removes chat messages )
+- Meme ( grabs memes from reddit )
+- user-info ( shows user info )
+- Leaderboard statistics ( shows active people within a leaderboard )
+- snipe ( shows what the previous deleted message said )
+- slowmode ( slows down the channel that the command was used in )
+- ping ( pong! )
+- lockdown
+- help
+- eval
+- 8ball
+- bot-info
+
+# Todo List
+
+- Invite Tracker
+- Invite Rewards
+- Economy
+- LavaLink Music Functionality
+
+
+
 # SneakyHub can host YOUR projects!
 
 If you are interested in having your productional or development project hosted by us 24/7 for free. Then please join our discord and let us know. A member of our community will help you get started. SneakyHub works with the developer so we grow with you as your project grows! If you need more resources we won't slow you down! SneakyHub will grow with you. If your project requires more resources than our default instance gives you, open a ticket and let us know then we can give you more resources so that your project operates in an optimal environment!
