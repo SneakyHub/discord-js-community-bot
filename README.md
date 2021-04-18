@@ -7,14 +7,14 @@ This discord bot is fully open source and we are proud to continue working on it
 Here is what we currently have within our discord bot!
 
 - AFK
-- Light moderation commands ( kick, ban & mute )
-- Cleanup ( removes chat messages )
-- Meme ( grabs memes from reddit )
-- user-info ( shows user info )
-- Leaderboard statistics ( shows active people within a leaderboard )
-- snipe ( shows what the previous deleted message said )
-- slowmode ( slows down the channel that the command was used in )
-- ping ( pong! )
+- Light moderation commands              ( kick, ban & mute )
+- Cleanup                                ( removes chat messages )
+- Meme                                   ( grabs memes from reddit )
+- user-info                              ( shows user info )
+- Leaderboard statistics                 ( shows active people within a leaderboard )
+- snipe                                  ( shows what the previous deleted message said )
+- slowmode                               ( slows down the channel that the command was used in )
+- ping                                   ( pong! )
 - lockdown
 - help
 - eval
