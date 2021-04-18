@@ -2,12 +2,16 @@
 
 This discord bot is fully open source and we are proud to continue working on it and adding to this repo! If you would like to fork it please go ahead and use it for your own projects. We are looking for more people to help us contribute towards this repo if you are interested in helping us with this project please let us know ro just send us a pull request! Please only use this source if you agree to our license agreement. If you do not agree to it then please do not use this bot.
 
-# Get FREE 24/7 Discord bot, website and small game server hosting!
+# SneakyHub can host YOUR projects!
 
-If you are interested in getting your own project it can be anything even if it does not relate to this discord bot. If you want to host your own projects on our network then please head on over to our official discord server and check the welcome channel on instructions on how to get started!
+If you are interested in having your productional or development project hosted by us 24/7 for free. Then please join our discord and let us know. A member of our community will help you get started. SneakyHub works with the developer so we grow with you as your project grows! If you need more resources we won't slow you down! SneakyHub will grow with you. If your project requires more resources than our default instance gives you, open a ticket and let us know then we can give you more resources so that your project operates in an optimal environment!
 
 Join our official discord server!
-[Official Discord](https://sneakyhub.com/discord "SneakyHub Discord Community")
+[Official Discord](https://sneakyhub.com/discord "SneakyHub Official Discord")
+
+# Why SneakyHub Exists?
+
+We love to help out smaller developers who are just getting grips with things and we would love to see them grow and work on their projects without the issues of having to pay for a server or worry about not having enough money to support their projects so we take the stress off you by making sure you do not have to worry about finances. We don't expect anyone to pay us to host their projects but we do accept donations to help us with our monthly out-goings. We do not push people to donate or give back to the community but we are there for you! What this means is that we have a place where all developers big or small can interact with each other so that not only do you all have a common ground to talk and you share common interests but we also have places for you to offer your development skills in our Dev Market area within our discord. Allowing you to potentially get paid for your skills. Anyways we hope to grow to get more developers on our network. We want a loving development community who helps others out within the communmity!
 
 # Rules for contributing to this GitHub Repository
 
