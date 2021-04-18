@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const webhook = {
-    token: "XPRN4_kSCSILR2YQmRymQeWvPfhCkUqOnyLYm2ahMH50ghGVRpklwwDyu1cnIwVTQO8y",
-    id: "826519427121807361"
+    token: "",
+    id: ""
 };
 
 module.exports = {
