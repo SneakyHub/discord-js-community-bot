@@ -27,6 +27,11 @@ Here is what we currently have within our discord bot!
 - Invite Rewards
 - Economy
 - LavaLink Music Functionality
+- Minigames ( poker, hangman, minesweeper, adventure & random chat events to earn money via economy )
+- Store
+- Store management
+- Payday ( allows users to do a payday command to earn money every day )
+- Heists
 
 
 
