@@ -1,6 +1,6 @@
 # SneakyHub Community
 
-This discord bot is fully open source and we are proud to continue working on it and adding to this repo! If you would like to fork it please go ahead and use it for your own projects. We are looking for more people to help us contribute towards this repo if you are interested in helping us with this project please let us know ro just send us a pull request!
+This discord bot is fully open source and we are proud to continue working on it and adding to this repo! If you would like to fork it please go ahead and use it for your own projects. We are looking for more people to help us contribute towards this repo if you are interested in helping us with this project please let us know ro just send us a pull request! Please only use this source if you agree to our license agreement. If you do not agree to it then please do not use this bot.
 
 # Get FREE 24/7 Discord bot, website and small game server hosting!
 
