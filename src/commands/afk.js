@@ -10,13 +10,13 @@ module.exports = {
         if (!args[0]) {
             afks.delete(message.author.id);
 
-            message.reply("your afk was removed.");
+            message.reply("your afk was removed.");     // AFK removed message
         } else {
             let m = args.slice(1).join(" ");
 
             afks.set(message.author.id, m);
 
-            message.channel.send("Your AFK has been set.");
+            message.channel.send("Your AFK has been set.");     // AFK set message
         }
     }
 }
