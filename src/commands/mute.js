@@ -11,9 +11,12 @@ module.exports = {
         let muted_id = "828453063970127902";
 
         let roles = [];
-        message.member.roles.cache.forEach(r => roles.push(r.id));
+        message.member.roles.cache.forEach(r => {
+            if (roles.includes(r.id)) return;
+            roles.push(r.id);
+        });
 
-        if (roles.includes(ids)) {
+        if (roles.includes("826924370210979851") || roles.includes("828319282068324382") || roles.includes("825702803355467806")) {
             if (message.guild.me.hasPermission("MANAGE_ROLES")) {
                 let target = message.mentions.members.first();
                 let role = message.guild.roles.cache.find(r => r.id == muted_id);
