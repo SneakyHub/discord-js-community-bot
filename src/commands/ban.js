@@ -11,6 +11,10 @@ module.exports = {
         if (message.member.hasPermission("BAN_MEMBERS")) {
             let member = message.mentions.members.first();
 
+            if (!member) {
+                return message.reply("please provide a user to ban.")
+            }
+
             if (member.id == message.author.id) return message.reply("you can't moderate yourself.");
             let reason = args.slice(1).join(" ") || "Unspecified";
 
@@ -20,13 +24,13 @@ module.exports = {
 
             try {
                 member.ban({ reason: reason + ` - Banned by: ${message.author.tag}` });
-                message.channel.send(`**${member.user.tag}** has been banned.\nReason: ${reason}`);
+                return message.channel.send(`**${member.user.tag}** has been banned.\nReason: ${reason}`);
             } catch (error) {
                 console.error(error);
-                message.channel.send("I was unable to ban the user.");
+                return message.channel.send("I was unable to ban the user.");
             }
         } else {
-            message.reply("you do not have sufficient permissions to run this command.");
+            return message.reply("you do not have sufficient permissions to run this command.");
         }
     }
 }
