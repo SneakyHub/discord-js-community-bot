@@ -11,11 +11,11 @@ module.exports = {
             .addFields(
                 {
                     name: "Users",
-                    value: `${client.users.cache.filter(u => !u.bot).size}`
+                    value: `${client.userCache.filter(u => !u.bot).size}`
                 },
                 {
                     name: "Bot Users",
-                    value: `${client.users.cache.filter(u => u.bot).size}`
+                    value: `${client.userCache.filter(u => u.bot).size}`
                 },
                 {
                     name: "API Latency",
