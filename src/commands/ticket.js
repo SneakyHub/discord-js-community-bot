@@ -7,7 +7,7 @@ module.exports = {
     aliases: [],
     run: async (client, message, args) => {
         if (args[0] == "close") {
-            if (message.channel.name.startsWith("ticket-")) {
+            if (user_tickets.has(message.channel.id)) {
                 user_tickets.set(`${message.channel.id}.open`, false);
 
                 message.channel.edit({
@@ -33,12 +33,12 @@ module.exports = {
 
                 message.delete();
 
-                message.channel.send("This ticket has been closed.").then(msg => msg.delete({ timeout: 2000 }));
+                message.channel.send(`This ticket has been closed by ${message.author.tag}.`);
             } else {
                 return
             }
         } else if (args[0] == "reopen") {
-            if (message.channel.name.startsWith("ticket-")) {
+            if (user_tickets.has(message.channel.id)) {
                 let channel = user_tickets.fetch(`${message.channel.id}`);
                 let user = channel.owner;
                 let open = user_tickets.fetch(`${user}.current_channel_id`);
@@ -73,12 +73,12 @@ module.exports = {
 
                 message.delete();
 
-                message.channel.send("This ticket has been reopened.").then(msg => msg.delete({ timeout: 2000 }));
+                message.channel.send(`This ticket has been reopened by ${message.author.tag}.`).then(msg => msg.delete({ timeout: 2000 }));
             } else {
                 return;
             }
         } else if (args[0] == "delete") {
-            if (message.channel.name.startsWith("ticket-")) {
+            if (user_tickets.has(message.channel.id)) {
                 if (user_tickets.fetch(`${message.channel.id}.open`) != false) return message.channel.send("Please close this ticket before attempting to delete it.");
                 user_tickets.set(`${user_tickets.fetch(`${message.channel.id}.owner`)}.current_channel_id`, message.channel.id);
 
@@ -123,7 +123,7 @@ module.exports = {
                 });
             }
         } else if (args[0] == "upgrade") {
-            if (message.channel.name.startsWith("ticket-")) {
+            if (user_tickets.has(message.channel.id)) {
                 message.channel.edit({
                     permissionOverwrites: [
                         {
@@ -145,10 +145,10 @@ module.exports = {
                     ]
                 });
 
-                message.channel.send("This ticket has been upgraded at the request of the ticket owner.");
+                message.channel.send(`This ticket has been upgraded at the request of the ${message.author.tag}.`);
             }
         } else if (args[0] == "downgrade") {
-            if (message.channel.name.startsWith("ticket-")) {
+            if (user_tickets.has(message.channel.id)) {
                 message.channel.edit({
                     permissionOverwrites: [
                         {
@@ -170,7 +170,24 @@ module.exports = {
                     ]
                 });
 
-                message.channel.send("This ticket has been downgraded at the request of the ticket owner.");
+                message.channel.send(`This ticket has been downgraded at the request of ${message.author.tag} .`);
+            }
+        } else if (args[0] == "status") {
+            if (user_tickets.has(message.channel.id)) {
+                let status = {
+                    "true": "Yes.",
+                    "false": "No."
+                };
+
+                let channel = user_tickets.fetch(message.channel.id);
+
+                const embed = new Discord.MessageEmbed()
+                    .setAuthor(message.author.tag)
+                    .setTitle("Ticket Status")
+                    .addField("Open", `${status[channel.open]}`)
+                    .addField("Owner", `<@!${channel.owner}>`)
+
+                message.channel.send(embed);
             }
         }
     }
