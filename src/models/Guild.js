@@ -16,6 +16,10 @@ const GuildSchema = new Mongoose.Schema({
     messageCount: {
         required: false,
         type: String
+    },
+    enabledModules: {
+        required: false,
+        type: Array
     }
 })
 
