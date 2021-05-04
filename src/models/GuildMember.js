@@ -22,3 +22,5 @@ const GuildMemberSchema = new Mongoose.Schema({
         type: Number
     }
 })
+
+module.exports = Mongoose.model("guild_member", GuildMemberSchema)
