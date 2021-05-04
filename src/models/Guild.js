@@ -14,3 +14,5 @@ const GuildSchema = new Mongoose.Schema({
         type: String
     }
 })
+
+module.exports = Mongoose.model("guild", GuildSchema)
