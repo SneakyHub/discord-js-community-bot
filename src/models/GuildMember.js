@@ -1,22 +1,24 @@
 const Mongoose = require("mongoose")
 
-const GuildSchema = new Mongoose.Schema({
+const GuildMemberSchema = new Mongoose.Schema({
+    userId: {
+        required: true,
+        type: String
+    },
     guildId: {
         required: true,
+        type: String
+    },
+    userName: {
+        required: false,
         type: String
     },
     guildName: {
         required: false,
         type: String
     },
-    prefix: {
-        required: false,
-        type: String
-    },
     messageCount: {
         required: false,
-        type: String
+        type: Number
     }
 })
-
-module.exports = Mongoose.model("guild", GuildSchema)
