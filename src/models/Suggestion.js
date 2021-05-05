@@ -6,7 +6,7 @@ const SuggestionSchema = new Mongoose.Schema({
         type: String
     },
     guildId: {
-        required: true,
+        required: false,
         type: String
     },
     content: {
