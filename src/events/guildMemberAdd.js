@@ -13,6 +13,8 @@ module.exports = {
 
         if (saved_roles.has(`${member.user.id}`)) {
             try {
+                if (!member.guild.me.hasPermission("MANAGE_ROLES")) return
+
                 let array = [];
                 let user_roles = saved_roles.fetch(`${member.user.id}.roles`);
 
@@ -29,14 +31,18 @@ module.exports = {
 
                 saved_roles.delete(`${member.user.id}`);
             } catch (error) {
-
+                console.log("failed to add roles to person")
             }
         }
 
         if (Date.now() - member.user.createdAt < 259200000) {
+            if (member.user.bot) return
+
             member.ban({ reason: "Account is less than 3 days old. - Banned by Auto-Ban" });
-            channel.send(`${member.user.tag} was banned due to the account being less than 3 days old.`);
+            //channel.send(`${member.user.tag} was banned due to the account being less than 3 days old.`);
         } else if (Date.now() - member.user.createdAt < 2419200000) {
+            if (member.user.bot) return
+
             try {
                 member.user.send(`Sorry! We only allow accounts over the age of 28 days to join.\nYour account was created ${hd(Date.now() - member.user.createdAt, { round: true })} ago.\n\nYou are welcome to join again once this account is over 28 days old!`);
             } catch (error) {
@@ -44,7 +50,7 @@ module.exports = {
             }
 
             member.kick(`Account is less than 28 days old. - Kicked by Auto-Kick`);
-            channel.send(`${member.user.tag} was kicked due to the account being less than 10 days old.`);
+            //channel.send(`${member.user.tag} was kicked due to the account being less than 28 days old.`);
         }
     }
 }
