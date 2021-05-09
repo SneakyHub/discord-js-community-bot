@@ -5,7 +5,15 @@ module.exports = {
     run: async (client) => {
         console.log("Bot is ready and online.");
 
+        client.user.setActivity("?help", { type: "LISTENING" })
+
         client.channels.cache.get("825721068395560981").messages.fetch({ limit: 99 }).then(async (fetched) => {
+            console.log(fetched.size);
+        }).catch(error => {
+            console.error(error);
+        });
+
+        client.channels.cache.get("826165658541752390").messages.fetch({ limit: 99 }).then(async (fetched) => {
             console.log(fetched.size);
         }).catch(error => {
             console.error(error);
