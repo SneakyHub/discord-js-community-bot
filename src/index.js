@@ -4,6 +4,10 @@ const config = require("../config");
 const LoadCommands = require("./utils/LoadCommands");
 const LoadEvents = require("./utils/LoadEvents");
 
+client.on("ready", () => {
+  client.editSnipes = new discord.Collection();//i forgot
+});
+
 client.on("messageUpdate", async(m, nm) => { //m = old mesage, nm = new message
   if (m.author.bot) return; //bot can't run commands
   if (!client.editSnipes.get(m.channel.id)) client.editSnipes.set(m.channel.id, []); //if there are no snipes, turn it to an empty array
