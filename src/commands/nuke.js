@@ -3,7 +3,7 @@ module.exports = {
     name: "nuke",
     description: "Nukes a given channel",
     authorPermission: "ADMINISTRATOR",
-    callback: async({message, args}) => {
+    run: async(message, client, args) => {
         let reason = args.join(" ") || "No Reason"
         if(!message.channel.deletable) {
             return message.reply("This channel cannot be nuked!")
