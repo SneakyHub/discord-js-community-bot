@@ -3,6 +3,11 @@ const client = new Discord.Client();
 const config = require("../config");
 const LoadCommands = require("./utils/LoadCommands");
 const LoadEvents = require("./utils/LoadEvents");
+const CurrencySystem = require("currency-system");
+
+const cs = new CurrencySystem;
+
+cs.connect(process.env.mongoDB);
 
 client.on("ready", () => {
   client.editSnipes = new discord.Collection();//i forgot
