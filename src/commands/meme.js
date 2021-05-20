@@ -1,47 +1,45 @@
-const Discord = require("discord.js");
-const axios = require("axios").default;
-const cheerio = require("cheerio");
-const urls = [
-    "r/dankmemes",
-    "r/memes",
-    "r/meme",
-    "r/memeeconomy",
-    "r/OTMemes",
-    "r/sequelmemes",
-    "r/historymemes"
-];
+const got = require('got');
+
+const Discord = require('discord.js');
 
 module.exports = {
     name: "meme",
     aliases: [],
-    run: async (client, message, args) => {
-        let msg = await message.channel.send("Fetching meme...");
-        let index = Math.floor(Math.random() * (urls.length - 1) + 1);
-        let url = `https://reddit.com/${urls[index]}`;
+    run: async (bot, message, args) => {
+        const embed = new Discord.MessageEmbed();
 
-        axios({
-            method: "GET",
-            url: `${url}`
-        }).then(response => {
-            let parseData = dealWithData(response.data);
+    got('https://www.reddit.com/r/dankmemes/random/.json').then(response => {
 
-            const embed = new Discord.MessageEmbed()
-                .setAuthor(message.author.tag)
-                .setImage(parseData)
+        let content = JSON.parse(response.body);
 
-            return msg.edit("", embed);
-        });
-    }
-}
+        let permalink = content[0].data.children[0].data.permalink;
 
-function dealWithData(html) {
-    const $ = cheerio.load(html);
-    const urlMeme = $("._2_tDEnGMLxpM6uOa2kaDB3.ImageBox-image.media-element._1XWObl-3b9tPy64oaG6fax");
-    const indexValue = randNo(urlMeme.length);
-    return urlMeme[indexValue].attribs.src;
-}
+        let memeUrl = `https://reddit.com${permalink}`;
 
-function randNo(limit) {
-    const thatNo = Math.floor(Math.random() * limit);
-    return thatNo;
-}
+        let memeImage = content[0].data.children[0].data.url;
+
+        let memeTitle = content[0].data.children[0].data.title;
+
+        let memeUpvotes = content[0].data.children[0].data.ups;
+
+        
+
+        let memeNumComments = content[0].data.children[0].data.num_comments;
+
+        embed.addField(`${memeTitle}`, `[View thread](${memeUrl})`);
+
+        embed.setImage(memeImage);
+
+        embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
+
+        message.channel.send(embed)
+
+            .then(sent => console.log(`Sent a reply to ${sent.author.username}`))
+
+        console.log('Bot responded with: ' + memeImage);
+
+    }).catch(console.error);
+
+    
+    } 
+
