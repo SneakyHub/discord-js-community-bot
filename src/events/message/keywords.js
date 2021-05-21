@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 
 module.exports = {
     name: "message",
+    disabled: true,
     run: async (client, message) => {
         if (message.channel.id != "828253375387795486") return
         if (message.author.bot) return
