@@ -49,17 +49,17 @@ module.exports = {
 
         setInterval(() => {
             let guild = client.guilds.cache.get("825699580779823125");
-            let array = ['!', '`', '#', "'", '-', '.', '_', '"', '+', '*', '£', "$", '%', '^', "&", '(', ')', '>', '<', '[', ']', ','];
 
-            guild.members.cache.forEach(member => {
-                for (let i = 0; i < array.length; i++) {
-                    if (member.displayName.startsWith(array[i])) {
-                        member.setNickname("Tried Hoisting");
-                    } else if (member.user.username.startsWith(array[i])) {
-                        member.setNickname("Tried Hoisting");
-                    }
+            guild.members.cache.filter(member => member.displayName.match(/^[a-z0-9]/i) == null).forEach(x => {
+                let root = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+                let newNickname = ""
+
+                while (newNickname.length < 10) {
+                    newNickname += root[Math.floor(Math.random() * root.length)]
                 }
-            });
+
+                x.setNickname(newNickname)
+            })
         }, 120000);
     }
 }
