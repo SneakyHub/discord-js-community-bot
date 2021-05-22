@@ -11,8 +11,8 @@ module.exports = {
             .setDescription('There is no edited message in this channel!');
         const editSnipes = client.editSnipes.get(message.channel.id); //the editSnipes we saved to the client earlier
         if (!editSnipes) return message.channel.send(ers); //send a message if there are no edit-sniped messages
-        const args = message.content.replace("!editsnipe", "").trim().split(" ");
-        const num = args[0] || 1; //the index of the snipe message, defaults to 1 (the latest)
+        const newArgs = message.content.replace("!editsnipe", "").trim().split(" ");
+        const num = newArgs[0] || 1; //the index of the snipe message, defaults to 1 (the latest)
         const editSnipe = (editSnipes.reverse())[num - 1]; //the editSnipe user requested, may be a bit complicating for you
         if (!editSnipe) return message.channel.send(`No edited message with number ${num} found`); //send a message if no edit-snipe indexed by what the user ent
         const e = new discord.MessageEmbed()
