@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const ms = require("ms");
-const logs = require("../../config").logs_channel;
+const logs = require("../../../config").logs_channel;
 const hd = require("humanize-duration");
 
 module.exports = {
