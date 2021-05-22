@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
     name: "nuke",
     description: "Nukes a given channel",
-    run: async (message, client, args) => {
+    run: async (client, message, args) => {
         if (!message.member.hasPermission("ADMINISTRATOR")) return
 
         let reason = args.join(" ") || "No Reason"
