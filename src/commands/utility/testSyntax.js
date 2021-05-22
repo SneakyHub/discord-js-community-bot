@@ -8,8 +8,8 @@ module.exports = {
         let guild = message.guild
         let text = message.content.replace("?text-syntax", "")
 
-        convertSyntax.run(client, text, { user, guild }).then(newText => {
-            message.channel.send(newText)
-        })
+        let newText = convertSyntax.run(client, text, { user, guild })
+
+        message.channel.send(newText)
     }
 }
