@@ -1,8 +1,10 @@
+const Discord = require("discord.js")
+
 module.exports = {
     name: "editsnipe",
     aliases: ['esnipe'],
     run: async (client, message, args) => {
-        const ers = new discord.MessageEmbed()
+        const ers = new Discord.MessageEmbed()
             .setColor('RED')
             .setAuthor(message.author.tag, message.author.displayAvatarURL({
                 dynamic: true,
@@ -23,6 +25,7 @@ module.exports = {
             .setTimestamp(editSnipe.editedAt);
         if (editSnipe.m.attachments.first()) e.setImage(editSnipe.m.attachments.first().url); //the user cant edit or add attachments onto an edited message, so this works
         editSnipes.reverse();
+
         message.channel.send({ embed: e });
     }
 }
