@@ -18,7 +18,7 @@ module.exports = {
             .setColor(colors[index])
             .setDescription(content)
             .setTimestamp(createdTimestamp)
-            .setFooter(id)
+            .setFooter(suggestionId)
 
         let msg = await message.channel.send(embed);
 
