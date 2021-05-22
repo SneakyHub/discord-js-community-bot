@@ -17,7 +17,7 @@ module.exports = {
         const num = newArgs[0] || 1; //the index of the snipe message, defaults to 1 (the latest)
         const editSnipe = (editSnipes.reverse())[num - 1]; //the editSnipe user requested, may be a bit complicating for you
         if (!editSnipe) return message.channel.send(`No edited message with number ${num} found`); //send a message if no edit-snipe indexed by what the user ent
-        const e = new discord.MessageEmbed()
+        const e = new Discord.MessageEmbed()
             .setAuthor(`${editSnipe.m.author.tag} (${editSnipe.m.author.id})`, editSnipe.m.author.avatarURL({ dynamic: 1 }))
             .setDescription(editSnipe.m.content || "null")
             .setColor("RANDOM")
