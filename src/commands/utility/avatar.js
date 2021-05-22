@@ -2,6 +2,7 @@
 const { MessageEmbed } = require("discord.js")
 module.exports = {
     name: "avatar",
+    aliases: ["av"],
     description: "Displays someone's avatar!",
     run: async (message, client, args) => {
         const user = message.mentions.users.first() || message.author || client.users.cache.get(u => u.id === args[0])
