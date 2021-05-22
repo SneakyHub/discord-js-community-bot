@@ -27,6 +27,7 @@ module.exports = {
 
             const embed = new Discord.MessageEmbed()
                 .setAuthor(message.author.tag)
+                .setColor("RANDOM")
                 .setImage(parseData)
 
             return msg.edit("", embed);

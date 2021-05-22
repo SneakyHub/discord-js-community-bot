@@ -24,6 +24,7 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(message.author.tag)
+            .setColor("RANDOM")
             .setTitle("8-Ball")
             .setDescription(question)
             .addField("Answer", `${responses[index]}`)
