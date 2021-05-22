@@ -14,7 +14,7 @@ client.invites = {}
 client.userInvites = new Map()
 client.editSnipes = new Discord.Collection()
 
-LoadCommands(client, "../commands");
-LoadEvents(client, "../events");
+LoadCommands.run(client, "../commands");
+LoadEvents.run(client, "../events");
 
 client.login(config.token);
