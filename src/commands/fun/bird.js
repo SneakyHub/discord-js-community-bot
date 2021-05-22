@@ -4,7 +4,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: "bird",
     category: "animals",
-    run: async (message, client, args) => {
+    run: async (client, message, args) => {
         const url = "https://some-random-api.ml/img/birb";
         const facts = "https://some-random-api.ml/facts/birb"
 
