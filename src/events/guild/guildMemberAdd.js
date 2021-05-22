@@ -2,10 +2,43 @@ const Discord = require("discord.js");
 const hd = require("humanize-duration");
 const db = require("quick.db");
 const saved_roles = new db.table("saved_roles");
+const Canvas = require("canvas")
+
+const applyText = (canvas, text) => {
+    const context = canvas.getContext('2d');
+
+    // Declare a base size of the font
+    let fontSize = 70;
+
+    do {
+        // Assign the font to the context and decrement it so it can be measured again
+        context.font = `${fontSize -= 10}px sans-serif`;
+        // Compare pixel width of the text to the canvas minus the approximate avatar size
+    } while (context.measureText(text).width > canvas.width - 300);
+
+    // Return the result to use in the actual canvas
+    return context.font;
+};
 
 module.exports = {
     name: "guildMemberAdd",
     run: async (client, member) => {
+        const canvas = Canvas.createCanvas(700, 250)
+        const context = canvas.getContext("2d")
+        const background = await Canvas.loadImage("../../assets/welcome.png")
+        context.drawImage(background, 0, 0, canvas.width, canvas.height)
+        const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png')
+
+        context.strokeRect(0, 0, canvas.width, canvas.height)
+        context.beginPath()
+        context.arc(125, 125, 100, 0, Math.PI * 2, true)
+        context.closePath()
+        context.clip()
+
+        context.font = applyText(canvas, `${member} welcome to ${member.guild.name}, head over to <#825797019103789056> to get started with hosting! If you need help feel free to ask for it in <#828253375387795486>!`)
+        context.fillStyle = '#ffffff'
+        context.fillText(`${member} welcome to ${member.guild.name}, head over to <#825797019103789056> to get started with hosting! If you need help feel free to ask for it in <#828253375387795486>!`, canvas.width / 2.5, canvas.height / 1.8)
+
         let channel_id = "826544543297437766";
         let channel = member.guild.channels.cache.find(c => c.id == `${channel_id}`);
 
@@ -35,7 +68,7 @@ module.exports = {
             .setDescription(`${member} welcome to ${member.guild.name}, head over to <#825797019103789056> to get started with hosting! If you need help feel free to ask for it in <#828253375387795486>!`)
             .setFooter("SneakyHub")
 
-        channel.send(`${member}`, embed)
+        channel.send(`${member}`, attachment)
 
         if (saved_roles.has(`${member.user.id}`)) {
             try {
