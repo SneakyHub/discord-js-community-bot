@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const suggestion = require("../models/Suggestion")
+const suggestion = require("../../models/Suggestion")
 
 module.exports = {
     name: "message",
