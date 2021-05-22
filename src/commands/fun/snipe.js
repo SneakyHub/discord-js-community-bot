@@ -14,9 +14,10 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(message.author.tag)
+            .setColor("RANDOM")
             .setTitle(snipe.message_author_tag)
             .setDescription(snipe.message_content)
-            .setFooter(`Message Deleted ${HD(Date.now() - snipe.message_created_timestamp)} ago`)
+            .setFooter(`Message was deleted ${HD(Date.now() - snipe.message_created_timestamp)} ago`)
 
         message.channel.send(embed);
     }
