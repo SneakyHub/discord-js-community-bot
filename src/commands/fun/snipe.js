@@ -13,9 +13,9 @@ module.exports = {
         }
 
         const embed = new Discord.MessageEmbed()
-            .setAuthor(message.author.tag)
+            .setAuthor(message.author.tag, message.author.iconURL)
             .setColor("RANDOM")
-            .setTitle(snipe.message_author_tag)
+            .setTitle(`${snipe.message_author_tag} said:`)
             .setDescription(snipe.message_content)
             .setFooter(`Message was deleted ${HD(Date.now() - snipe.message_created_timestamp)} ago`)
 
