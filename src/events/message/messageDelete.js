@@ -11,7 +11,7 @@ module.exports = {
             token: null
         }
 
-        const document = await BotSettings.findOne({ key: "logWebhookInfo" })
+        const document = BotSettings.findOne({ key: "logWebhookInfo" })
 
         console.log(document)
         info.id = document.values.id
