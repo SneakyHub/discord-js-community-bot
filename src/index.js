@@ -1,7 +1,7 @@
-require("./mongo")()
+require("./mongo")() // connects the bot to the MongoDB
 
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const client = new Discord.Client(); // creates a client
 const config = require("../config");
 const LoadCommands = require("./utils/LoadCommands");
 const LoadEvents = require("./utils/LoadEvents");
@@ -14,7 +14,7 @@ client.invites = {}
 client.userInvites = new Map()
 client.editSnipes = new Discord.Collection()
 
-LoadCommands.run(client, "../commands");
-LoadEvents.run(client, "../events");
+LoadCommands.run(client, "../commands"); // loads in all the commands
+LoadEvents.run(client, "../events"); // loads in all the events
 
-client.login(config.token);
+client.login(config.token); // logs into the bot
