@@ -4,8 +4,8 @@ const db = require('quick.db');
 module.exports = {
     name: "warn",
     description: "Warn a member",
-
     run: async(client, message, args) => {
+        
         if(!message.member.hasPermission("MANAGE_SERVER")) return message.channel.send('You can\'t use that');
 
         const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
