@@ -6,7 +6,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: "trigger",
     description: "triggers", //Usage -trigger <@mention.user> otherwise it will use your avatar
-    run: async (client, message, args) => {
+    run: async (message, client, args) => {
         let user = message.mentions.users.first() || message.author;
         let avatar = user.displayAvatarURL({ format: "png", dynamic: false })
         let image = await canvacord.Canvas.trigger(avatar);
