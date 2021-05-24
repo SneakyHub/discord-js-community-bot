@@ -3,6 +3,7 @@ const Discord = require("discord.js")
 module.exports = {
     name: "editsnipe",
     aliases: ['esnipe'],
+    disabled: true,
     run: async (client, message, args) => {
         const ers = new Discord.MessageEmbed()
             .setColor('RED')
