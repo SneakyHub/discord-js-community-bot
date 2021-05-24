@@ -3,7 +3,8 @@ const db = require('quick.db');
 module.exports = {
     name: "warnings",
     description: "Check a users warnings",
-    run: async(client, message, args) => {
+    run: async (client, message, args) => {
+        
         const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]) || message.author;
 
 
@@ -11,11 +12,6 @@ module.exports = {
 
         if(warnings === null) warnings = 0;
 
-        const embed = Discord.MessageEmbed()
-        .setTitle('Warnings')
-        .setDescription(`**${user.username}** has **${warnings}** warning(s)`)
-        .setFooter(message.author.username,  message.author.displayAvatarURL({ dynamic: true }))
-        .setTimestamp()
-        .setColor('RANDOM');
+        message.channel.send(`**${user.username}** has *${warnings}* warning(s)`);
     }
 }
