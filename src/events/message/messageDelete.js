@@ -18,14 +18,6 @@ module.exports = {
 
         const hook = new Discord.WebhookClient(info.id, info.token)
 
-        let deleted = "";
-
-        message.guild.fetchAuditLogs({ type: "MESSAGE_DELETE", limit: 10 }).then(audit => {
-            deleted = `${audit.entries.last().executor} (\`${audit.entries.last().executor.id}\`)`;
-        }).catch(e => {
-
-        });
-
         if (message.attachments.cache.size != 0) {
             message.attachments.cache.forEach(attachment => {
                 let embed = new Discord.MessageEmbed()
@@ -56,11 +48,6 @@ module.exports = {
                 {
                     name: "Author",
                     value: message.author,
-                    inline: true
-                },
-                {
-                    name: "Deleted By",
-                    value: deleted.toString() || "null",
                     inline: true
                 }
             )
