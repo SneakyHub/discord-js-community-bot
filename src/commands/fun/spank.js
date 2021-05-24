@@ -6,7 +6,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = {
     name: "spank",
     description: "spank", //Usage -spank <@mention.user> otherwise it will send nothing. Add Embed to it if you want.
-    run: async(message, args) => {
+    run: async(client, message, args) => {
         let user = message.mentions.users.first(); //|| message.author;
         let avatar = message.author.displayAvatarURL({ format: "png", dynamic: false })
         let avatar1 = user.displayAvatarURL({ format: "png", dynamic: false })
