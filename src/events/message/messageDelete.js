@@ -1,24 +1,46 @@
 const Discord = require("discord.js");
-const webhook = {
-    token: "P6Nx4CqAVL9cnNOqSXgbSd3YP75SZEydDFhxhJTmqS7HjlkjkLrlZ_fajGV8PgFYpf6P",
-    id: "833393130208100432"
-};
+const BotSettings = require("../../models/BotSettings")
 
 module.exports = {
     name: "messageDelete",
     run: async (client, message) => {
         if (message.channel.parentID == "832604196054237184") return;
 
+        let info = {
+            id: null,
+            token: null
+        }
+
+        await BotSettings.findOne({ key: "logWebhookInfo" }).then(document => {
+            info.id = document.values.id
+            info.token = document.values.token
+        })
+
+        const hook = new Discord.WebhookClient(info.id, info.token)
+
         let deleted = "";
 
-        message.guild.fetchAuditLogs({ type: "MESSAGE_DELETE", limit: 10, user: message.author }).then(audit => {
+        message.guild.fetchAuditLogs({ type: "MESSAGE_DELETE", limit: 10 }).then(audit => {
             deleted = `${audit.entries.last().executor} (\`${audit.entries.last().executor.id}\`)`;
         }).catch(e => {
 
         });
 
+        if (message.attachments.cache.size != 0) {
+            message.attachments.cache.forEach(attachment => {
+                let embed = new Discord.MessageEmbed()
+                    .setAuthor("Attachment")
+                    .setColor("RED")
+                    .setImage(attachment.url)
+                    .setURL(attachment.url)
+                    .setTimestamp()
+
+                hook.send(embed)
+            })
+        }
+
         let embed = new Discord.MessageEmbed()
-            .setTitle("Message Deleted")
+            .setAuthor("Message Deleted")
             .setColor("RED")
             .addFields(
                 {
@@ -42,8 +64,9 @@ module.exports = {
                     inline: true
                 }
             )
+            .setTimestamp()
 
-        const hook = new Discord.WebhookClient(webhook.id, webhook.token);
+
 
         hook.send(embed);
 
