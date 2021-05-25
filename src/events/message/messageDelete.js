@@ -18,19 +18,6 @@ module.exports = {
 
         const hook = new Discord.WebhookClient(info.id, info.token)
 
-        if (message.attachments.cache.size != 0) {
-            message.attachments.cache.forEach(attachment => {
-                let embed = new Discord.MessageEmbed()
-                    .setAuthor("Attachment")
-                    .setColor("RED")
-                    .setImage(attachment.url)
-                    .setURL(attachment.url)
-                    .setTimestamp()
-
-                hook.send(embed)
-            })
-        }
-
         let embed = new Discord.MessageEmbed()
             .setAuthor("Message Deleted")
             .setColor("RED")
