@@ -12,11 +12,9 @@ module.exports = {
         }
 
         const document = await BotSettings.findOne({ key: "logWebhookInfo" })
-        let values = document.vals
 
-        console.log(values)
-        info.id = values.id
-        info.token = values.token
+        info.id = document.id
+        info.token = document.token
 
         const hook = new Discord.WebhookClient(info.id, info.token)
 
