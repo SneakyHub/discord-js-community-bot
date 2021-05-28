@@ -16,7 +16,7 @@ module.exports = {
             return client.sendErrorEmbed(message, "Please mention or provide the ID of a channel.")
         }
 
-        Guild.findOneAndUpdate({ guildId: message.guild.id }, {
+        await Guild.findOneAndUpdate({ guildId: message.guild.id }, {
             logChannel: newChannel.id
         })
 
