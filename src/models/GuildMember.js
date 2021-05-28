@@ -20,6 +20,28 @@ const GuildMemberSchema = new Mongoose.Schema({
     messageCount: {
         required: false,
         type: Number
+    },
+    moderations: {
+        warnings: {
+            required: false,
+            type: Number,
+            default: 0
+        },
+        mutes: {
+            required: false,
+            type: Number,
+            default: 0
+        },
+        kicks: {
+            required: false,
+            type: Number,
+            default: 0
+        },
+        bans: {
+            required: false,
+            type: Number,
+            default: 0
+        }
     }
 })
 
