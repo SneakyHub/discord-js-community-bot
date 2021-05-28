@@ -13,6 +13,17 @@ client.userCache = new Discord.Collection();
 client.invites = {}
 client.userInvites = new Map()
 client.editSnipes = new Discord.Collection()
+client.sendErrorEmbed = async (message, text) => {
+    const errorEmbed = new Discord.MessageEmbed()
+        .setAuthor(message.author.tag)
+        .setTitle(":x: Error!")
+        .setColor("RED")
+        .setThumbnail(message.guild.iconURL())
+        .setDescription(text)
+        .setFooter("Powered by SneakyHub")
+
+    return message.channel.send(errorEmbed)
+}
 
 LoadCommands.run(client, "../commands"); // loads in all the commands
 LoadEvents.run(client, "../events"); // loads in all the events
