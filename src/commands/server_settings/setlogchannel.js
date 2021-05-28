@@ -3,7 +3,6 @@ const Guild = require("../../models/Guild")
 module.exports = {
     name: "setlogchannel",
     aliases: ["set-log-channel"],
-    disabled: true,
     description: "Sets the channel where the bot will log events such as mutes.",
     category: "Server-Settings",
     run: async (client, message, args) => {
@@ -17,7 +16,7 @@ module.exports = {
             return client.sendErrorEmbed(message, "Please mention or provide the ID of a channel.")
         }
 
-        await Guild.findOneAndUpdate({ guildId: message.guild.id }, {
+        await Guild.updateOne({ guildId: message.guild.id }, {
             logChannel: newChannel.id
         })
 
