@@ -1,22 +1,13 @@
 const Discord = require("discord.js");
-const BotSettings = require("../../models/BotSettings")
 
 module.exports = {
     name: "messageDelete",
     run: async (client, message) => {
         if (message.channel.parentID == "832604196054237184") return;
 
-        let info = {
-            id: null,
-            token: null
-        }
+        let logchannel = "826519397912805377" // this is temporary
 
-        const document = await BotSettings.findOne({ key: "logWebhookInfo" })
-
-        info.id = document.id
-        info.token = document.token
-
-        const hook = new Discord.WebhookClient(info.id, info.token)
+        let channel = message.guild.channels.cache.get(logchannel) // also temporary
 
         let embed = new Discord.MessageEmbed()
             .setAuthor("Message Deleted")
@@ -40,9 +31,7 @@ module.exports = {
             )
             .setTimestamp()
 
-
-
-        hook.send(embed);
+        channel.send(embed);
 
         let snipes = client.snipes;
 
