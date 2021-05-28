@@ -7,13 +7,13 @@ module.exports = {
     category: "Server-Settings",
     run: async (client, message, args) => {
         if (!message.member.hasPermission("MANAGE_GUILD")) {
-            client.sendErrorEmbed(message, "You have insufficient permissions to run this command.")
+            return client.sendErrorEmbed(message, "You have insufficient permissions to run this command.")
         }
 
         let newChannel = message.mentions.channels.first() || message.guild.channels.cache.get(args[0])
 
         if (!newChannel) {
-            client.sendErrorEmbed(message, "Please mention or provide the ID of a channel.")
+            return client.sendErrorEmbed(message, "Please mention or provide the ID of a channel.")
         }
 
         Guild.findOneAndUpdate({ guildId: message.guild.id }, {
