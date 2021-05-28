@@ -11,15 +11,18 @@ const GuildSchema = new Mongoose.Schema({
     },
     prefix: {
         required: false,
-        type: String
+        type: String,
+        default: "!"
     },
     messageCount: {
         required: false,
-        type: String
+        type: String,
+        default: 0
     },
     enabledModules: {
         required: false,
-        type: Array
+        type: Array,
+        default: []
     }
 })
 
