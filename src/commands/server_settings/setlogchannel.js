@@ -7,7 +7,7 @@ module.exports = {
     description: "Sets the channel where the bot will log events such as mutes.",
     category: "Server-Settings",
     run: async (client, message, args) => {
-        if (!message.member.hasPermission("MANAGE_GUILD")) {
+        if (!message.member.hasPermission("ADMINISTRATOR")) { // admin cuz testing
             const errorEmbed = new Discord.MessageEmbed()
                 .setAuthor(message.author.tag)
                 .setTitle(":x: Error!")
