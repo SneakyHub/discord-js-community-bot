@@ -16,7 +16,7 @@ const GuildSchema = new Mongoose.Schema({
     },
     messageCount: {
         required: false,
-        type: String,
+        type: Number,
         default: 0
     },
     enabledModules: {
