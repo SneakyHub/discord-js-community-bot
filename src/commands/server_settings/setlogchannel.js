@@ -3,6 +3,7 @@ const Guild = require("../../models/Guild")
 module.exports = {
     name: "setlogchannel",
     aliases: ["set-log-channel"],
+    disabled: true,
     description: "Sets the channel where the bot will log events such as mutes.",
     category: "Server-Settings",
     run: async (client, message, args) => {
