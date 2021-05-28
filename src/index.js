@@ -24,6 +24,23 @@ client.sendErrorEmbed = async (message, text) => {
 
     return message.channel.send(errorEmbed)
 }
+client.sendEmbed = async (message, data) => {
+    if (!message) return Error("Insufficient parameters: message")
+    if (!data) return Error("Insufficient parameters: data")
+    if (!data.color || data.color == null) color = "RANDOM"
+    if (!data.title || data.title == null) return Error("You must provide a title for this embed.")
+    if (!data.description || data.description == null) return Error("You must provide a description for this embed.")
+
+    const embed = new Discord.MessageEmbed()
+        .setAuthor(message.author.tag)
+        .setTitle(data.title)
+        .setColor(data.color)
+        .setThumbnail(message.guild.iconURL())
+        .setDescription(data.description)
+        .setFooter("Powered by SneakyHub")
+
+    return message.channel.send(embed)
+}
 
 LoadCommands.run(client, "../commands"); // loads in all the commands
 LoadEvents.run(client, "../events"); // loads in all the events
